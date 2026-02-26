@@ -7,25 +7,25 @@ const rules: ResponseRule[] = [
   {
     keywords: /\b(hi|hello|hey|sup|yo|greetings|howdy)\b/i,
     responses: [
-      "Hey there! I'm Elwin's cat assistant. Yes, I live in a terminal. Don't question it.",
-      "Ahoy! Welcome to the terminal. Try a /command or just chat — I don't judge.",
-      "Hello, human. I'm the cat in charge here. *purrs*",
+      "Hey. I'm the phantom that runs this terminal. Ask me anything.",
+      "Welcome to the void. Try a /command or just talk — I'm always listening.",
+      "Greetings, human. I've been expecting you.",
     ],
   },
   {
     keywords: /\b(who|about|elwin)\b/i,
     responses: [
-      "Elwin is a software engineer who let a cat run his website. Wise choice.",
-      "I'm just the mascot. Elwin does the actual engineering. I do the vibes.",
-      "Elwin writes code. I guard the terminal. We make a good team.",
+      "Elwin is a software engineer. I'm the digital entity he built to guard this place.",
+      "I'm the mascot. Elwin does the engineering. I maintain the vibes.",
+      "Elwin writes code. I haunt the terminal. Symbiotic relationship.",
     ],
   },
   {
-    keywords: /\b(cat|kitten|kitty|meow|mascot|mochi|blob|creature)\b/i,
+    keywords: /\b(fox|phantom|ghost|spirit|mascot|creature|entity|wireframe)\b/i,
     responses: [
-      "Yes, I'm a cat. An SVG cat, specifically. Practically immortal.",
-      "*purrs* You noticed me! Click me for a surprise.",
-      "I'm the cutest thing on this site and I know it.",
+      "I'm a wireframe fox spirit. Geometry and light. That's all I need.",
+      "Click me. I don't mind the attention.",
+      "Technically I'm a constellation of vertices and edges. Philosophically, I'm more.",
     ],
   },
   {
@@ -38,29 +38,29 @@ const rules: ResponseRule[] = [
   {
     keywords: /\b(thanks?|thank you|thx|ty)\b/i,
     responses: [
-      "You're welcome. I accept payment in fish.",
-      "No problem! That's what terminal cats are for.",
-      "Anytime. :3",
+      "You're welcome. I accept payment in vertices.",
+      "No problem. That's what digital phantoms are for.",
+      "Anytime.",
     ],
   },
   {
     keywords: /\b(bye|goodbye|see ya|later|cya)\b/i,
     responses: [
-      "See you around! I'll be here. Always here. Watching.",
-      "Bye! Don't forget — /github if you want to see the code.",
-      "Later! :3",
+      "See you around. I'll be here. Always here. Watching.",
+      "Bye. Don't forget — /github if you want to see the code.",
+      "Later. *dissolves into particles*",
     ],
   },
 ];
 
 const fallbacks = [
-  "Interesting. I'm a cat, so I'll just stare at you blankly.",
-  "I'd answer that, but my paws aren't great with nuance. Try a /command instead?",
-  "That's above my pay grade. I'm literally a cat on a personal website.",
+  "Interesting. I'm a wireframe phantom, so I'll just observe.",
+  "I'd answer that, but I'm made of geometry, not wisdom. Try a /command instead?",
+  "That's above my pay grade. I'm literally a fox made of light on a personal website.",
   "Hmm. I'll pretend I understood that perfectly.",
-  "My neural net (two yarn balls and a whisker) couldn't parse that. Try again?",
-  "I'm flattered you think a cat can help with that.",
-  "*knocks your question off the table* ...sorry, instinct.",
+  "My neural net (thirteen edges and a prayer) couldn't parse that. Try again?",
+  "I'm flattered you think a wireframe spirit can help with that.",
+  "*glitches momentarily* ...sorry, what were you saying?",
   "Sure, yeah, totally. (I have no idea what you mean.)",
 ];
 

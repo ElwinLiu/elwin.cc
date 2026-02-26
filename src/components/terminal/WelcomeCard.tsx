@@ -11,7 +11,7 @@ export default function WelcomeCard() {
           <p className="text-sm font-bold text-term-fg">Welcome!</p>
           <Mascot className="w-20 h-20" />
           <div className="text-center text-xs font-mono text-term-muted">
-            <p>Free Model &middot; Mochi</p>
+            <p>Free Model &middot; Phantom</p>
             <p>~/elwin.cc</p>
           </div>
         </div>
