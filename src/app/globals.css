@@ -49,3 +49,12 @@ body {
 *::-webkit-scrollbar-thumb:hover {
   background: rgba(250, 250, 250, 0.2);
 }
+
+/* Hide scrollbar on snap container */
+.snap-x {
+  scrollbar-width: none;
+}
+
+.snap-x::-webkit-scrollbar {
+  display: none;
+}
