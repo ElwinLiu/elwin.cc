@@ -1,4 +1,4 @@
-import Lobster from "@/components/Lobster";
+import Mascot from "@/components/Mascot";
 import { commands } from "@/lib/commands";
 
 export default function WelcomeCard() {
@@ -6,12 +6,12 @@ export default function WelcomeCard() {
     <fieldset className="rounded border border-solid border-[#ef6f2f]/40 px-4 pb-4 pt-2">
       <legend className="px-2 text-sm font-mono text-term-accent">elwin.cc</legend>
       <div className="flex gap-6">
-        {/* Left: lobster + identity */}
+        {/* Left: mascot + identity */}
         <div className="flex flex-col items-center gap-2 py-2">
           <p className="text-sm font-bold text-term-fg">Welcome!</p>
-          <Lobster className="w-20 h-20" />
+          <Mascot className="w-20 h-20" />
           <div className="text-center text-xs font-mono text-term-muted">
-            <p>Free Model &middot; Lobster</p>
+            <p>Free Model &middot; Mochi</p>
             <p>~/elwin.cc</p>
           </div>
         </div>
