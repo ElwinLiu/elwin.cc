@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useCallback, useRef, type KeyboardEvent } from "react";
+import { useState, useCallback, useRef, useEffect, type KeyboardEvent } from "react";
 import { commands, type Command } from "@/lib/commands";
 import { getResponse } from "@/lib/responses";
-import ChatArea from "./ChatArea";
+import ChatArea, { type ChatAreaHandle } from "./ChatArea";
 import TerminalInput from "./TerminalInput";
 import SlashCommandMenu from "./SlashCommandMenu";
 import StatusBar from "./StatusBar";
@@ -36,12 +36,19 @@ export default function Terminal() {
   const [input, setInput] = useState("");
   const [menuIndex, setMenuIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const chatRef = useRef<ChatAreaHandle>(null);
 
   const showMenu = input.startsWith("/");
   const query = input.slice(1).toLowerCase();
   const filtered = showMenu
     ? commands.filter((c) => c.name.startsWith(query))
     : [];
+
+  useEffect(() => {
+    if (filtered.length > 0) {
+      requestAnimationFrame(() => chatRef.current?.scrollToBottom());
+    }
+  }, [filtered.length]);
 
   const addMessage = useCallback((role: Message["role"], text: string) => {
     setMessages((prev) => [...prev, { id: nextId++, role, text }]);
@@ -132,7 +139,12 @@ export default function Terminal() {
     <div className={`${styles.terminalAmbient} flex h-screen w-full items-center justify-center overflow-hidden p-4 font-sans`}>
       <div
         className={`${styles.terminalGlass} relative flex w-full max-w-4xl max-h-[600px] flex-col overflow-hidden rounded-xl`}
-        onClick={() => inputRef.current?.focus()}
+        onMouseDown={(e) => {
+          if (e.target !== inputRef.current) {
+            e.preventDefault();
+            inputRef.current?.focus();
+          }
+        }}
       >
         {/* Title bar */}
         <div className="relative z-10 flex items-center gap-2 border-b border-white/[0.06] px-4 py-2.5">
@@ -147,21 +159,21 @@ export default function Terminal() {
         </div>
 
         {/* Chat area */}
-        <ChatArea messages={messages} />
+        <ChatArea ref={chatRef} messages={messages} />
 
         {/* Slash command menu + input */}
         <div className="relative mt-auto">
-          <SlashCommandMenu
-            commands={filtered}
-            selectedIndex={menuIndex}
-            onSelect={executeCommand}
-          />
           <TerminalInput
             ref={inputRef}
             value={input}
             onChange={handleInputChange}
             onSubmit={handleSubmit}
             onKeyDown={handleKeyDown}
+          />
+          <SlashCommandMenu
+            commands={filtered}
+            selectedIndex={menuIndex}
+            onSelect={executeCommand}
           />
         </div>
 
