@@ -14,7 +14,7 @@ export default function SlashCommandMenu({
   if (commands.length === 0) return null;
 
   return (
-    <div className="grid grid-cols-[auto_1fr] mt-1 pb-3" style={{ paddingLeft: "calc(1.25rem + 8px + 10px)", paddingRight: "1.25rem" }}>
+    <div className="grid grid-cols-[3fr_7fr] mt-1 pb-3" style={{ paddingLeft: "calc(1.25rem + 8px + 10px)", paddingRight: "1.25rem" }}>
       {commands.map((cmd, i) => {
         const selected = i === selectedIndex;
         return (
