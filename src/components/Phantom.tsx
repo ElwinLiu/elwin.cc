@@ -37,7 +37,7 @@ const S = 200;
 const CX = S / 2;
 const CY = S / 2;
 
-export default function Mascot({ className }: { className?: string }) {
+export default function Phantom({ className }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {

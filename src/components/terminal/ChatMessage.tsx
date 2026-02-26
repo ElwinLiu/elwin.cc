@@ -30,6 +30,7 @@ function Linkify({ text }: { text: string }) {
 }
 
 import WelcomeCard from "./WelcomeCard";
+import styles from "./terminal.module.css";
 
 export default function ChatMessage({ message }: { message: Message }) {
   if (message.role === "welcome") {
@@ -45,7 +46,7 @@ export default function ChatMessage({ message }: { message: Message }) {
       <div className="flex flex-col gap-1 text-[13.5px] mt-3 mb-1 font-mono">
         <div className="flex gap-2.5 text-[#fafafa] py-1.5 w-full">
           <span className="font-bold text-[#ef6f2f] shrink-0 select-none">&#10095;</span>
-          <span className="whitespace-pre-wrap leading-relaxed glow-wave-text">{message.text}</span>
+          <span className={`whitespace-pre-wrap leading-relaxed ${styles.glowWaveText}`}>{message.text}</span>
         </div>
         {hasSubtext && (
           <div className="flex gap-3 text-[#8a8380] ml-[3px]">

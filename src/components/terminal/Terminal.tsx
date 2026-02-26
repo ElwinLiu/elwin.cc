@@ -8,6 +8,7 @@ import TerminalInput from "./TerminalInput";
 import SlashCommandMenu from "./SlashCommandMenu";
 import StatusBar from "./StatusBar";
 import type { Message } from "./ChatMessage";
+import styles from "./terminal.module.css";
 
 let nextId = 0;
 
@@ -128,9 +129,9 @@ export default function Terminal() {
   );
 
   return (
-    <div className="terminal-ambient flex h-screen w-full items-center justify-center overflow-hidden p-4 font-sans">
+    <div className={`${styles.terminalAmbient} flex h-screen w-full items-center justify-center overflow-hidden p-4 font-sans`}>
       <div
-        className="terminal-glass relative flex w-full max-w-4xl max-h-[600px] flex-col overflow-hidden rounded-xl"
+        className={`${styles.terminalGlass} relative flex w-full max-w-4xl max-h-[600px] flex-col overflow-hidden rounded-xl`}
         onClick={() => inputRef.current?.focus()}
       >
         {/* Title bar */}
