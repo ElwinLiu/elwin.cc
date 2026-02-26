@@ -2,17 +2,17 @@
 
 :root {
   --background: #111114;
-  --foreground: #c8c8ce;
+  --foreground: #ebdeb2;
   --muted: #5a5a66;
   --border: #38342e;
-  --term-bg: #1c1c22;
-  --term-surface: #222228;
-  --term-fg: #c8c8ce;
-  --term-muted: #5a5a66;
-  --term-border: #38342e;
+  --term-bg: #1e1e1e;
+  --term-surface: #252525;
+  --term-fg: #ebdeb2;
+  --term-muted: #7d7d85;
+  --term-border: #333333;
   --term-accent: #b8885e;
-  --term-red: #d95740;
-  --term-prompt: #b8885e;
+  --term-red: #ff5f57;
+  --term-prompt: #ebdeb2;
 }
 
 @theme inline {
@@ -35,4 +35,31 @@
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+@keyframes glow-wave {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.glow-wave-text {
+  background: linear-gradient(
+    90deg,
+    rgba(150, 150, 155, 0.6) 0%,
+    rgba(150, 150, 155, 0.6) 45%,
+    rgba(255, 255, 255, 1) 48%,
+    rgba(255, 255, 255, 1) 52%,
+    rgba(150, 150, 155, 0.6) 55%,
+    rgba(150, 150, 155, 0.6) 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: glow-wave 3s linear infinite;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
 }
