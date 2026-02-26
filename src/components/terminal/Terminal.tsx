@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, type KeyboardEvent } from "react";
+import { useState, useCallback, useRef, type KeyboardEvent } from "react";
 import { commands, type Command } from "@/lib/commands";
 import { getResponse } from "@/lib/responses";
 import ChatArea from "./ChatArea";
@@ -34,6 +34,7 @@ export default function Terminal() {
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [input, setInput] = useState("");
   const [menuIndex, setMenuIndex] = useState(0);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const showMenu = input.startsWith("/");
   const query = input.slice(1).toLowerCase();
@@ -128,7 +129,10 @@ export default function Terminal() {
 
   return (
     <div className="terminal-ambient flex h-screen w-full items-center justify-center overflow-hidden p-4 font-sans">
-      <div className="terminal-glass relative flex w-full max-w-4xl max-h-[600px] flex-col overflow-hidden rounded-xl">
+      <div
+        className="terminal-glass relative flex w-full max-w-4xl max-h-[600px] flex-col overflow-hidden rounded-xl"
+        onClick={() => inputRef.current?.focus()}
+      >
         {/* Title bar */}
         <div className="relative z-10 flex items-center gap-2 border-b border-white/[0.06] px-4 py-2.5">
           <div className="flex gap-1.5">
@@ -152,6 +156,7 @@ export default function Terminal() {
             onSelect={executeCommand}
           />
           <TerminalInput
+            ref={inputRef}
             value={input}
             onChange={handleInputChange}
             onSubmit={handleSubmit}

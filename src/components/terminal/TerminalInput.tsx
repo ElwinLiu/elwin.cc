@@ -1,4 +1,4 @@
-import { type KeyboardEvent } from "react";
+import { forwardRef, type KeyboardEvent } from "react";
 
 interface TerminalInputProps {
   value: string;
@@ -7,12 +7,8 @@ interface TerminalInputProps {
   onKeyDown: (e: KeyboardEvent<HTMLInputElement>) => void;
 }
 
-export default function TerminalInput({
-  value,
-  onChange,
-  onSubmit,
-  onKeyDown,
-}: TerminalInputProps) {
+const TerminalInput = forwardRef<HTMLInputElement, TerminalInputProps>(
+  function TerminalInput({ value, onChange, onSubmit, onKeyDown }, ref) {
   function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
@@ -26,6 +22,7 @@ export default function TerminalInput({
     <div className="px-5 py-3 flex items-center gap-2.5 font-mono">
       <span className="text-[#ef6f2f] font-bold text-[13.5px] shrink-0">&#10095;</span>
       <input
+        ref={ref}
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}
@@ -38,4 +35,7 @@ export default function TerminalInput({
       />
     </div>
   );
-}
+  },
+);
+
+export default TerminalInput;
