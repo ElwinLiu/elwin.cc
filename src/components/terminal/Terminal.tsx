@@ -15,8 +15,23 @@ function welcomeMessage(): Message {
   return { id: nextId++, role: "welcome", text: "" };
 }
 
+function msg(role: Message["role"], text: string): Message {
+  return { id: nextId++, role, text };
+}
+
+const initialMessages: Message[] = [
+  welcomeMessage(),
+  msg("user", "Hey Phantom, show them how this works"),
+  msg(
+    "system",
+    'Easy — type / and a menu pops up with all available commands. Pick one or keep typing to filter. You can also just chat with me, I don\'t bite. *glances at own wireframe* ...I can\'t.',
+  ),
+  msg("user", "/github"),
+  msg("system", "https://github.com/ElwinLiu"),
+];
+
 export default function Terminal() {
-  const [messages, setMessages] = useState<Message[]>([welcomeMessage()]);
+  const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [input, setInput] = useState("");
   const [menuIndex, setMenuIndex] = useState(0);
 
