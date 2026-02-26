@@ -16,6 +16,8 @@ export default function WelcomeCard() {
           </div>
         </div>
 
+        <div className="w-px bg-[#ef6f2f]/30 self-stretch" />
+
         {/* Right: commands */}
         <div className="flex-1 space-y-3 py-2">
           <p className="text-sm font-semibold text-term-accent">Available commands</p>
