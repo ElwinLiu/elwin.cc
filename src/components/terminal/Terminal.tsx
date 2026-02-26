@@ -128,7 +128,7 @@ export default function Terminal() {
 
   return (
     <div className="terminal-ambient flex h-screen w-full items-center justify-center overflow-hidden p-4 font-sans">
-      <div className="terminal-glass relative flex w-full max-w-4xl max-h-[520px] flex-col overflow-hidden rounded-xl">
+      <div className="terminal-glass relative flex w-full max-w-4xl max-h-[600px] flex-col overflow-hidden rounded-xl">
         {/* Title bar */}
         <div className="relative z-10 flex items-center gap-2 border-b border-white/[0.06] px-4 py-2.5">
           <div className="flex gap-1.5">
