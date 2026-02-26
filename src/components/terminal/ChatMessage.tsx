@@ -80,7 +80,7 @@ export default function ChatMessage({ message }: { message: Message }) {
   return (
     <div className="flex gap-2.5 text-[13.5px] mt-3 mb-1">
       <span className={`${dotColor} shrink-0 text-xs translate-y-[3px]`}>&#9679;</span>
-      <div className="flex-1 whitespace-pre-wrap text-[#fafafa] leading-relaxed">
+      <div data-selectable className="flex-1 whitespace-pre-wrap text-[#fafafa] leading-relaxed cursor-text select-text">
         <Linkify text={message.text} />
       </div>
     </div>

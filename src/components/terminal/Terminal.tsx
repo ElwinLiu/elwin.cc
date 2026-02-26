@@ -141,6 +141,8 @@ export default function Terminal() {
         className={`${styles.terminalGlass} relative flex w-full max-w-4xl max-h-[600px] flex-col overflow-hidden rounded-xl`}
         onMouseDown={(e) => {
           if (e.target !== inputRef.current) {
+            const target = e.target as HTMLElement;
+            if (target.closest("[data-selectable]")) return;
             e.preventDefault();
             inputRef.current?.focus();
           }
