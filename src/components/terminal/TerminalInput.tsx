@@ -32,7 +32,7 @@ export default function TerminalInput({
         onKeyDown={handleKeyDown}
         placeholder="Type a command..."
         autoFocus
-        className="flex-1 bg-transparent text-[13.5px] text-[#fafafa] placeholder:text-[#6b6b78] outline-none caret-[#ef6f2f]"
+        className="flex-1 bg-transparent text-[13.5px] text-[#fafafa] placeholder:text-[#8a8380] outline-none caret-[#ef6f2f]"
         spellCheck={false}
         autoComplete="off"
       />

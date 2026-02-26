@@ -48,7 +48,7 @@ export default function ChatMessage({ message }: { message: Message }) {
           <span className="whitespace-pre-wrap leading-relaxed glow-wave-text">{message.text}</span>
         </div>
         {hasSubtext && (
-          <div className="flex gap-3 text-[#6b6b78] ml-[3px]">
+          <div className="flex gap-3 text-[#8a8380] ml-[3px]">
             <span className="select-none text-base leading-none translate-y-[2px]">&#9492;</span>
             <span className="whitespace-pre-wrap">
               {isClear ? "(no content)" : "[Image #2]"}
