@@ -14,21 +14,24 @@ export default function SlashCommandMenu({
   if (commands.length === 0) return null;
 
   return (
-    <div className="mx-4 mt-1 rounded border border-term-border bg-term-surface overflow-hidden">
-      {commands.map((cmd, i) => (
-        <button
-          key={cmd.name}
-          onClick={() => onSelect(cmd)}
-          className={`flex w-full items-center gap-3 px-3 py-1 text-left text-sm transition-colors ${
-            i === selectedIndex
-              ? "text-term-accent"
-              : "text-term-fg"
-          }`}
-        >
-          <span className="font-mono">/{cmd.name}</span>
-          <span className={`text-xs ${i === selectedIndex ? "text-term-accent/60" : "text-term-muted"}`}>{cmd.description}</span>
-        </button>
-      ))}
+    <div className="grid grid-cols-[auto_1fr] mt-1 pb-3" style={{ paddingLeft: "calc(1.25rem + 8px + 10px)", paddingRight: "1.25rem" }}>
+      {commands.map((cmd, i) => {
+        const selected = i === selectedIndex;
+        return (
+          <button
+            key={cmd.name}
+            onClick={() => onSelect(cmd)}
+            className="contents text-left text-sm"
+          >
+            <span className={`font-mono py-0.5 pr-8 transition-colors ${selected ? "text-term-accent" : "text-term-muted"}`}>
+              /{cmd.name}
+            </span>
+            <span className={`font-mono py-0.5 truncate transition-colors ${selected ? "text-term-accent" : "text-term-muted"}`}>
+              {cmd.description}
+            </span>
+          </button>
+        );
+      })}
     </div>
   );
 }

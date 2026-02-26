@@ -178,7 +178,7 @@ export default function Terminal() {
         </div>
 
         {/* Status bar */}
-        <StatusBar />
+        {filtered.length === 0 && <StatusBar />}
       </div>
     </div>
   );
