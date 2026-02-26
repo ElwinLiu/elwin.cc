@@ -112,16 +112,16 @@ export default function Terminal() {
   );
 
   return (
-    <div className="flex h-screen w-full items-center justify-center p-4 font-mono">
-      <div className="flex w-full max-w-4xl max-h-[520px] flex-col overflow-hidden rounded-lg border border-term-border bg-term-bg shadow-2xl">
+    <div className="terminal-ambient flex h-screen w-full items-center justify-center overflow-hidden p-4 font-sans">
+      <div className="terminal-glass relative flex w-full max-w-4xl max-h-[520px] flex-col overflow-hidden rounded-xl">
         {/* Title bar */}
-        <div className="flex items-center gap-2 border-b border-term-border bg-term-surface px-4 py-2.5">
+        <div className="relative z-10 flex items-center gap-2 border-b border-white/[0.06] px-4 py-2.5">
           <div className="flex gap-1.5">
-            <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-            <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-            <span className="h-3 w-3 rounded-full bg-[#28c840]" />
+            <span className="h-3 w-3 rounded-full bg-[#ff5f57]/80" />
+            <span className="h-3 w-3 rounded-full bg-[#febc2e]/80" />
+            <span className="h-3 w-3 rounded-full bg-[#28c840]/80" />
           </div>
-          <span className="flex-1 text-center text-xs text-term-muted tracking-wider">
+          <span className="flex-1 text-center text-xs font-mono text-term-muted tracking-wider">
             ELWIN.CC
           </span>
         </div>

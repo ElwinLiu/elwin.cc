@@ -24,7 +24,7 @@ export default function TerminalInput({
 
   return (
     <div className="px-5 py-3 flex items-center gap-2.5 font-mono">
-      <span className="text-[#ebdeb2] font-bold text-[13.5px] shrink-0">&#10095;</span>
+      <span className="text-[#ef6f2f] font-bold text-[13.5px] shrink-0">&#10095;</span>
       <input
         type="text"
         value={value}
@@ -32,7 +32,7 @@ export default function TerminalInput({
         onKeyDown={handleKeyDown}
         placeholder="Type a command..."
         autoFocus
-        className="flex-1 bg-transparent text-[13.5px] text-[#ebdeb2] placeholder:text-[#7d7d85] outline-none caret-[#ebdeb2]"
+        className="flex-1 bg-transparent text-[13.5px] text-[#fafafa] placeholder:text-[#6b6b78] outline-none caret-[#ef6f2f]"
         spellCheck={false}
         autoComplete="off"
       />

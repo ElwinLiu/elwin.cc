@@ -43,12 +43,12 @@ export default function ChatMessage({ message }: { message: Message }) {
 
     return (
       <div className="flex flex-col gap-1 text-[13.5px] mt-3 mb-1 font-mono">
-        <div className="flex gap-2.5 text-[#ebdeb2] py-1.5 w-full">
-          <span className="font-bold text-[#ebdeb2] shrink-0 select-none">&#10095;</span>
+        <div className="flex gap-2.5 text-[#fafafa] py-1.5 w-full">
+          <span className="font-bold text-[#ef6f2f] shrink-0 select-none">&#10095;</span>
           <span className="whitespace-pre-wrap leading-relaxed glow-wave-text">{message.text}</span>
         </div>
         {hasSubtext && (
-          <div className="flex gap-3 text-[#7d7d85] ml-[3px]">
+          <div className="flex gap-3 text-[#6b6b78] ml-[3px]">
             <span className="select-none text-base leading-none translate-y-[2px]">&#9492;</span>
             <span className="whitespace-pre-wrap">
               {isClear ? "(no content)" : "[Image #2]"}
@@ -61,8 +61,8 @@ export default function ChatMessage({ message }: { message: Message }) {
 
   if (message.role === "error") {
     return (
-      <div className="flex gap-2.5 text-[13.5px] mt-3 mb-1 font-mono">
-        <span className="text-[#ff5f57] shrink-0 text-xs translate-y-[3px]">&#9679;</span>
+      <div className="flex gap-2.5 text-[13.5px] mt-3 mb-1">
+        <span className="text-[#ff5f57] shrink-0 text-xs translate-y-[3px] font-mono">&#9679;</span>
         <div className="flex-1 whitespace-pre-wrap text-[#ff5f57] leading-relaxed">
           {message.text}
         </div>
@@ -74,12 +74,12 @@ export default function ChatMessage({ message }: { message: Message }) {
     message.text.startsWith("Read ") ||
     message.text.startsWith("Explore") ||
     message.text.startsWith("Done");
-  const dotColor = isSuccess ? "text-[#28c840]" : "text-[#ebdeb2]";
+  const dotColor = isSuccess ? "text-[#28c840]" : "text-[#fafafa]";
 
   return (
-    <div className="flex gap-2.5 text-[13.5px] mt-3 mb-1 font-mono">
+    <div className="flex gap-2.5 text-[13.5px] mt-3 mb-1">
       <span className={`${dotColor} shrink-0 text-xs translate-y-[3px]`}>&#9679;</span>
-      <div className="flex-1 whitespace-pre-wrap text-[#ebdeb2] leading-relaxed">
+      <div className="flex-1 whitespace-pre-wrap text-[#fafafa] leading-relaxed">
         <Linkify text={message.text} />
       </div>
     </div>

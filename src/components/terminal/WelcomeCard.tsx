@@ -3,14 +3,14 @@ import { commands } from "@/lib/commands";
 
 export default function WelcomeCard() {
   return (
-    <fieldset className="rounded border border-solid border-[#d77856] px-4 pb-4 pt-2">
-      <legend className="px-2 text-sm text-term-accent">elwin.cc</legend>
+    <fieldset className="rounded border border-solid border-[#ef6f2f]/40 px-4 pb-4 pt-2">
+      <legend className="px-2 text-sm font-mono text-term-accent">elwin.cc</legend>
       <div className="flex gap-6">
         {/* Left: lobster + identity */}
         <div className="flex flex-col items-center gap-2 py-2">
           <p className="text-sm font-bold text-term-fg">Welcome!</p>
           <Lobster className="w-20 h-20" />
-          <div className="text-center text-xs text-term-muted">
+          <div className="text-center text-xs font-mono text-term-muted">
             <p>Free Model &middot; Lobster</p>
             <p>~/elwin.cc</p>
           </div>
