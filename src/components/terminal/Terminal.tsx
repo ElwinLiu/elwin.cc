@@ -68,6 +68,9 @@ export default function Terminal() {
         addMessage("user", `/${cmd.name}`);
         if (cmd.url) {
           addMessage("system", cmd.url);
+          if (!cmd.url.startsWith("mailto:")) {
+            window.open(cmd.url, "_blank", "noopener,noreferrer");
+          }
         }
       }
 

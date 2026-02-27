@@ -50,6 +50,27 @@ body {
   background: rgba(250, 250, 250, 0.2);
 }
 
+/* Skip-arrow nudge animation */
+@keyframes nudge {
+  0%, 100% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-50%) translateX(4px); }
+}
+@keyframes nudge-left {
+  0%, 100% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-50%) translateX(-4px); }
+}
+.animate-nudge {
+  animation: nudge 2s ease-in-out infinite;
+}
+.animate-nudge-left {
+  animation: nudge-left 2s ease-in-out infinite;
+}
+.animate-nudge:hover,
+.animate-nudge-left:hover {
+  animation: none;
+  transform: translateY(-50%);
+}
+
 /* Hide scrollbar on snap container */
 .snap-x {
   scrollbar-width: none;
