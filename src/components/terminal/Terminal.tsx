@@ -165,7 +165,7 @@ export default function Terminal() {
             <span className="h-3 w-3 rounded-full bg-[#28c840]/80" />
           </div>
           <span className="flex-1 text-center text-xs font-mono text-term-muted tracking-wider">
-            ELWIN.md
+            ELWIN.cc
           </span>
         </div>
 
