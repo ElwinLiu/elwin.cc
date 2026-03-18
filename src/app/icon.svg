@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 10 120 120">
+  <defs>
+    <filter id="g">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#g)" stroke="#EF6F2F" stroke-width="3" fill="none" stroke-linecap="round">
+    <!-- Left ear -->
+    <line x1="55" y1="20" x2="72" y2="52"/>
+    <line x1="55" y1="20" x2="100" y2="42"/>
+    <!-- Right ear -->
+    <line x1="145" y1="20" x2="128" y2="52"/>
+    <line x1="145" y1="20" x2="100" y2="42"/>
+    <!-- Forehead -->
+    <line x1="72" y1="52" x2="100" y2="42"/>
+    <line x1="128" y1="52" x2="100" y2="42"/>
+    <!-- Face sides upper -->
+    <line x1="72" y1="52" x2="58" y2="82"/>
+    <line x1="128" y1="52" x2="142" y2="82"/>
+    <!-- Face sides lower -->
+    <line x1="58" y1="82" x2="72" y2="108"/>
+    <line x1="142" y1="82" x2="128" y2="108"/>
+    <!-- Jaw -->
+    <line x1="72" y1="108" x2="100" y2="122"/>
+    <line x1="128" y1="108" x2="100" y2="122"/>
+    <!-- Nose bridge -->
+    <line x1="100" y1="42" x2="100" y2="92"/>
+  </g>
+  <!-- Vertices -->
+  <g fill="#EF6F2F">
+    <circle cx="55" cy="20" r="2.5"/>
+    <circle cx="145" cy="20" r="2.5"/>
+    <circle cx="72" cy="52" r="2.5"/>
+    <circle cx="128" cy="52" r="2.5"/>
+    <circle cx="100" cy="42" r="2.5"/>
+    <circle cx="58" cy="82" r="2.5"/>
+    <circle cx="142" cy="82" r="2.5"/>
+    <circle cx="72" cy="108" r="2.5"/>
+    <circle cx="128" cy="108" r="2.5"/>
+    <circle cx="100" cy="122" r="2.5"/>
+    <circle cx="100" cy="92" r="2.5"/>
+  </g>
+  <!-- Eyes -->
+  <g filter="url(#g)">
+    <polygon points="72,70 82,66.5 92,70 82,73.5" fill="#FFA03C"/>
+    <circle cx="82" cy="70" r="2" fill="#FFF0C8"/>
+    <polygon points="108,70 118,66.5 128,70 118,73.5" fill="#FFA03C"/>
+    <circle cx="118" cy="70" r="2" fill="#FFF0C8"/>
+  </g>
+</svg>

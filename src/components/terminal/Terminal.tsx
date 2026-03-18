@@ -62,6 +62,12 @@ export default function Terminal() {
           { id: nextId++, role: "user", text: "/help" },
           welcomeMessage(),
         ]);
+      } else if (cmd.name === "projects") {
+        setMessages((prev) => [
+          ...prev,
+          { id: nextId++, role: "user", text: "/projects" },
+          { id: nextId++, role: "projects", text: "" },
+        ]);
       } else if (cmd.name === "clear") {
         setMessages([]);
       } else {
@@ -159,7 +165,7 @@ export default function Terminal() {
             <span className="h-3 w-3 rounded-full bg-[#28c840]/80" />
           </div>
           <span className="flex-1 text-center text-xs font-mono text-term-muted tracking-wider">
-            ELWIN.CC
+            ELWIN.md
           </span>
         </div>
 

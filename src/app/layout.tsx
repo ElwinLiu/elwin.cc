@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Elwin - elwin.cc",
+  title: "ELWIN.md",
   description: "Personal website of Elwin",
 };
 
