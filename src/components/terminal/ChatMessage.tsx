@@ -71,15 +71,9 @@ export default function ChatMessage({ message }: { message: Message }) {
               </div>
 
               <div className="min-w-0 flex-1">
-                {/* Name + version */}
-                <div className="flex items-center gap-2">
-                  <span className="font-mono text-sm font-medium text-term-fg transition-colors group-hover:text-term-accent">
-                    {project.name}
-                  </span>
-                  <span className="rounded border border-white/[0.06] px-1.5 py-0.5 font-mono text-[10px] text-term-muted/40">
-                    v{project.version}
-                  </span>
-                </div>
+                <span className="font-mono text-sm font-medium text-term-fg transition-colors group-hover:text-term-accent">
+                  {project.name}
+                </span>
 
                 {/* Tagline */}
                 <div className="mt-0.5 font-mono text-xs italic text-term-accent/50">

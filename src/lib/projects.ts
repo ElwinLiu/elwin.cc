@@ -4,7 +4,6 @@ export interface Project {
   description: string;
   url: string;
   logo: string;
-  version: string;
   tags: string[];
 }
 
@@ -16,7 +15,6 @@ export const projects: Project[] = [
       "Free, open-source macOS speech-to-text. Press a shortcut, speak, get text in any app. Run locally for privacy or use cloud APIs for speed.",
     url: "https://handless.elwin.cc",
     logo: "/handless-logo.png",
-    version: "0.1.13",
     tags: ["macOS", "Rust + React", "Local-first", "Open Source"],
   },
 ];

@@ -28,14 +28,9 @@ export default function ProjectCard() {
             </div>
 
             <div className="min-w-0 flex-1">
-              <div className="mb-1 flex items-center gap-3">
-                <h3 className="text-lg font-medium text-term-fg transition-colors group-hover:text-term-accent">
-                  {project.name}
-                </h3>
-                <span className="rounded-full border border-white/[0.06] px-2 py-0.5 font-mono text-[10px] text-term-muted/50">
-                  v{project.version}
-                </span>
-              </div>
+              <h3 className="mb-1 text-lg font-medium text-term-fg transition-colors group-hover:text-term-accent">
+                {project.name}
+              </h3>
 
               <p className="mb-4 text-sm leading-relaxed text-term-muted">
                 {project.description}
