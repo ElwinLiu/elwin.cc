@@ -3,7 +3,7 @@ import { commands } from "@/lib/commands";
 
 export default function WelcomeCard() {
   return (
-    <fieldset className="rounded border border-solid border-[#ef6f2f]/40 px-4 pb-4 pt-2">
+    <fieldset className="rounded border border-solid border-term-accent/40 px-4 pb-4 pt-2">
       <legend className="px-2 text-sm font-mono text-term-accent">ELWIN.cc</legend>
       <div className="flex gap-6">
         {/* Left: phantom + identity */}
@@ -16,7 +16,7 @@ export default function WelcomeCard() {
           </div>
         </div>
 
-        <div className="w-px bg-[#ef6f2f]/30 self-stretch" />
+        <div className="w-px bg-term-accent/30 self-stretch" />
 
         {/* Right: commands */}
         <div className="flex-1 space-y-3 py-2">

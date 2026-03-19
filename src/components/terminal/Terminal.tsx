@@ -158,7 +158,7 @@ export default function Terminal() {
         }}
       >
         {/* Title bar */}
-        <div className="relative z-10 flex items-center gap-2 border-b border-white/[0.06] px-4 py-2.5">
+        <div className="relative z-10 flex items-center gap-2 border-b border-term-border px-4 py-2.5">
           <div className="flex gap-1.5">
             <span className="h-3 w-3 rounded-full bg-[#ff5f57]/80" />
             <span className="h-3 w-3 rounded-full bg-[#febc2e]/80" />

@@ -20,9 +20,9 @@ const TerminalInput = forwardRef<HTMLInputElement, TerminalInputProps>(
 
   return (
     <div className="mx-5">
-      <div className="border-t border-white/[0.06]" />
+      <div className="border-t border-term-border" />
       <div className="py-3 flex items-center gap-2.5 font-mono">
-        <span className="text-[#ef6f2f] font-bold text-[13.5px] shrink-0">&#10095;</span>
+        <span className="text-term-accent font-bold text-[13.5px] shrink-0">&#10095;</span>
         <input
           ref={ref}
           type="text"
@@ -31,12 +31,12 @@ const TerminalInput = forwardRef<HTMLInputElement, TerminalInputProps>(
           onKeyDown={handleKeyDown}
           placeholder="Type a command..."
           autoFocus
-          className="flex-1 bg-transparent text-[13.5px] text-[#fafafa] placeholder:text-[#8a8380] outline-none caret-[#ef6f2f]"
+          className="flex-1 bg-transparent text-[13.5px] text-term-fg placeholder:text-term-muted outline-none caret-term-accent"
           spellCheck={false}
           autoComplete="off"
         />
       </div>
-      <div className="border-t border-white/[0.06]" />
+      <div className="border-t border-term-border" />
     </div>
   );
   },

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTheme } from "next-themes";
 
 // Wireframe fox geometry (200×200 coordinate space)
 const BASE_VERTS: [number, number][] = [
@@ -37,8 +38,51 @@ const S = 200;
 const CX = S / 2;
 const CY = S / 2;
 
+// Color presets for dark/light themes
+const DARK_COLORS = {
+  accent: "239,111,47",
+  eyeGlow: "255,160,60",
+  pupil: "rgba(255,240,200,0.9)",
+  edgeAlpha: 0.3,
+  edgeAlphaHover: 0.55,
+  vertAlpha: 0.5,
+  vertAlphaHover: 0.8,
+  glowAlpha: 0.04,
+  glowAlphaHover: 0.1,
+  shadowBlur: 3,
+  shadowBlurHover: 6,
+  eyeShadow: 6,
+  eyeShadowHover: 12,
+  eyeAlpha: 0.85,
+  eyeAlphaHover: 1,
+};
+
+const LIGHT_COLORS = {
+  accent: "180,70,20",
+  eyeGlow: "200,100,30",
+  pupil: "rgba(120,50,10,0.9)",
+  edgeAlpha: 0.5,
+  edgeAlphaHover: 0.75,
+  vertAlpha: 0.7,
+  vertAlphaHover: 0.95,
+  glowAlpha: 0.06,
+  glowAlphaHover: 0.12,
+  shadowBlur: 2,
+  shadowBlurHover: 4,
+  eyeShadow: 4,
+  eyeShadowHover: 8,
+  eyeAlpha: 0.95,
+  eyeAlphaHover: 1,
+};
+
 export default function Phantom({ className }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { resolvedTheme } = useTheme();
+  const themeRef = useRef(resolvedTheme);
+
+  useEffect(() => {
+    themeRef.current = resolvedTheme;
+  }, [resolvedTheme]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -90,6 +134,7 @@ export default function Phantom({ className }: { className?: string }) {
 
     function draw() {
       t++;
+      const c = themeRef.current === "light" ? LIGHT_COLORS : DARK_COLORS;
       ctx.clearRect(0, 0, S, S);
       const speed = hovered ? 1.8 : 1;
       const verts = getVerts();
@@ -102,8 +147,8 @@ export default function Phantom({ className }: { className?: string }) {
 
       // Background glow
       const glow = ctx.createRadialGradient(CX, CY, 0, CX, CY, 90);
-      glow.addColorStop(0, `rgba(239,111,47,${hovered ? 0.1 : 0.04})`);
-      glow.addColorStop(0.6, `rgba(239,111,47,${hovered ? 0.04 : 0.01})`);
+      glow.addColorStop(0, `rgba(${c.accent},${hovered ? c.glowAlphaHover : c.glowAlpha})`);
+      glow.addColorStop(0.6, `rgba(${c.accent},${hovered ? c.glowAlpha : c.glowAlpha * 0.25})`);
       glow.addColorStop(1, "transparent");
       ctx.fillStyle = glow;
       ctx.fillRect(0, 0, S, S);
@@ -113,7 +158,7 @@ export default function Phantom({ className }: { className?: string }) {
         const r = (1 - shockwave) * 90;
         ctx.beginPath();
         ctx.arc(CX, CY, r, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(239,111,47,${shockwave * 0.5})`;
+        ctx.strokeStyle = `rgba(${c.accent},${shockwave * 0.5})`;
         ctx.lineWidth = 1.5;
         ctx.stroke();
         shockwave = Math.max(0, shockwave - 0.015);
@@ -129,15 +174,15 @@ export default function Phantom({ className }: { className?: string }) {
         const alpha = 0.15 + Math.sin(t * 0.03 + p.angle) * 0.1;
         ctx.beginPath();
         ctx.arc(x, y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(239,111,47,${alpha + (hovered ? 0.15 : 0)})`;
+        ctx.fillStyle = `rgba(${c.accent},${alpha + (hovered ? 0.15 : 0)})`;
         ctx.fill();
       }
 
       // Wireframe edges
       ctx.save();
-      ctx.shadowColor = "rgba(239,111,47,0.6)";
-      ctx.shadowBlur = hovered ? 6 : 3;
-      ctx.strokeStyle = `rgba(239,111,47,${hovered ? 0.55 : 0.3})`;
+      ctx.shadowColor = `rgba(${c.accent},0.6)`;
+      ctx.shadowBlur = hovered ? c.shadowBlurHover : c.shadowBlur;
+      ctx.strokeStyle = `rgba(${c.accent},${hovered ? c.edgeAlphaHover : c.edgeAlpha})`;
       ctx.lineWidth = 1.2;
       for (const [a, b] of EDGES) {
         const [x1, y1] = verts[a];
@@ -153,7 +198,7 @@ export default function Phantom({ className }: { className?: string }) {
       for (const [x, y] of verts) {
         ctx.beginPath();
         ctx.arc(x, y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(239,111,47,${hovered ? 0.8 : 0.5})`;
+        ctx.fillStyle = `rgba(${c.accent},${hovered ? c.vertAlphaHover : c.vertAlpha})`;
         ctx.fill();
       }
 
@@ -170,11 +215,11 @@ export default function Phantom({ className }: { className?: string }) {
         const x = x1 + (x2 - x1) * p.t;
         const y = y1 + (y2 - y1) * p.t;
         ctx.save();
-        ctx.shadowColor = "rgba(239,111,47,0.8)";
+        ctx.shadowColor = `rgba(${c.accent},0.8)`;
         ctx.shadowBlur = 4;
         ctx.beginPath();
         ctx.arc(x, y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(239,111,47,${0.4 + (hovered ? 0.3 : 0)})`;
+        ctx.fillStyle = `rgba(${c.accent},${0.4 + (hovered ? 0.3 : 0)})`;
         ctx.fill();
         ctx.restore();
       }
@@ -188,21 +233,21 @@ export default function Phantom({ className }: { className?: string }) {
         const eyeY = 70 + eyeShiftY;
 
         ctx.save();
-        ctx.shadowColor = "rgba(239,111,47,0.9)";
-        ctx.shadowBlur = hovered ? 12 : 6;
+        ctx.shadowColor = `rgba(${c.accent},0.9)`;
+        ctx.shadowBlur = hovered ? c.eyeShadowHover : c.eyeShadow;
         ctx.beginPath();
         ctx.moveTo(eyeX - 10, eyeY);
         ctx.lineTo(eyeX, eyeY - 3.5);
         ctx.lineTo(eyeX + 10, eyeY);
         ctx.lineTo(eyeX, eyeY + 3.5);
         ctx.closePath();
-        ctx.fillStyle = `rgba(255,160,60,${hovered ? 1 : 0.85})`;
+        ctx.fillStyle = `rgba(${c.eyeGlow},${hovered ? c.eyeAlphaHover : c.eyeAlpha})`;
         ctx.fill();
 
         // Bright pupil center
         ctx.beginPath();
         ctx.arc(eyeX, eyeY, 1.8, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(255,240,200,0.9)";
+        ctx.fillStyle = c.pupil;
         ctx.fill();
         ctx.restore();
       }
@@ -210,7 +255,7 @@ export default function Phantom({ className }: { className?: string }) {
       // Glitch scan line (rare)
       if (Math.random() < 0.015) {
         const gy = 30 + Math.random() * 140;
-        ctx.fillStyle = `rgba(239,111,47,${0.03 + Math.random() * 0.08})`;
+        ctx.fillStyle = `rgba(${c.accent},${0.03 + Math.random() * 0.08})`;
         ctx.fillRect(20, gy, 160, 1 + Math.random() * 2);
       }
 

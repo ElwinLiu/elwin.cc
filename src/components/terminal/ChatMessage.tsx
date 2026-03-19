@@ -55,7 +55,7 @@ export default function ChatMessage({ message }: { message: Message }) {
             target="_blank"
             rel="noopener noreferrer"
             data-selectable
-            className="group block rounded-lg border border-white/[0.06] bg-gradient-to-br from-white/[0.04] to-white/[0.01] p-4 transition-all duration-300 hover:border-term-accent/30 hover:shadow-[0_0_30px_-8px_rgba(239,111,47,0.15)]"
+            className="group block rounded-lg border border-term-overlay bg-gradient-to-br from-term-overlay-subtle to-transparent p-4 transition-all duration-300 hover:border-term-accent/30 hover:shadow-[0_0_30px_-8px_rgba(239,111,47,0.15)]"
           >
             <div className="flex items-start gap-4">
               {/* Logo with glow */}
@@ -90,7 +90,7 @@ export default function ChatMessage({ message }: { message: Message }) {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-white/[0.06] bg-white/[0.02] px-2 py-0.5 font-mono text-[10px] text-term-muted/60"
+                      className="rounded-full border border-term-overlay bg-term-overlay-subtle px-2 py-0.5 font-mono text-[10px] text-term-muted/60"
                     >
                       {tag}
                     </span>
@@ -128,12 +128,12 @@ export default function ChatMessage({ message }: { message: Message }) {
 
     return (
       <div className="flex flex-col gap-1 text-[13.5px] mt-3 mb-1 font-mono">
-        <div className="flex gap-2.5 text-[#fafafa] py-1.5 w-full">
-          <span className="font-bold text-[#ef6f2f] shrink-0 select-none">&#10095;</span>
+        <div className="flex gap-2.5 text-term-fg py-1.5 w-full">
+          <span className="font-bold text-term-accent shrink-0 select-none">&#10095;</span>
           <span className={`whitespace-pre-wrap leading-relaxed ${styles.glowWaveText}`}>{message.text}</span>
         </div>
         {hasSubtext && (
-          <div className="flex gap-3 text-[#8a8380] ml-[3px]">
+          <div className="flex gap-3 text-term-muted ml-[3px]">
             <span className="select-none text-base leading-none translate-y-[2px]">&#9492;</span>
             <span className="whitespace-pre-wrap">
               {isClear ? "(no content)" : "[Image #2]"}
@@ -159,12 +159,12 @@ export default function ChatMessage({ message }: { message: Message }) {
     message.text.startsWith("Read ") ||
     message.text.startsWith("Explore") ||
     message.text.startsWith("Done");
-  const dotColor = isSuccess ? "text-[#28c840]" : "text-[#fafafa]";
+  const dotColor = isSuccess ? "text-[#28c840]" : "text-term-fg";
 
   return (
     <div className="flex gap-2.5 text-[13.5px] mt-3 mb-1">
       <span className={`${dotColor} shrink-0 text-xs translate-y-[3px]`}>&#9679;</span>
-      <div data-selectable className="flex-1 whitespace-pre-wrap text-[#fafafa] leading-relaxed cursor-text select-text">
+      <div data-selectable className="flex-1 whitespace-pre-wrap text-term-fg leading-relaxed cursor-text select-text">
         <Linkify text={message.text} />
       </div>
     </div>
